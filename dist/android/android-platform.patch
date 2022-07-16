@@ -1,0 +1,13 @@
+--- a/lib/cmake/Qt6Core/Qt6AndroidMacros.cmake
++++ b/lib/cmake/Qt6Core/Qt6AndroidMacros.cmake
+@@ -400,7 +400,9 @@
+         set(sign_aab "--sign")
+     endif()
+ 
+-    set(extra_args "")
++    # Github runner has android-33-ext5 which doesn't work with androiddeployqt
++    # https://bugreports.qt.io/browse/QTBUG-112536
++    set(extra_args "--android-platform" "android-31")
+     if(QT_INTERNAL_NO_ANDROID_RCC_BUNDLE_CLEANUP)
+         list(APPEND extra_args "--no-rcc-bundle-cleanup")
+     endif()
